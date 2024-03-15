@@ -30,11 +30,11 @@ export const listar = async (req, res) =>{
             return res.status(400).json(errors)
         }
 
-        const {pk_cedula_user, nombre_user, email_user, password_user, descripcion_user, telefono_user, rol_user}=req.body
+        const {pk_cedula_user, nombre_user, email_user, password_user, descripcion_user, fecha_nacimiento_user, telefono_user, rol_user}=req.body
 
-        let sql = `insert into usuarios (pk_cedula_user, nombre_user, email_user, password_user, descripcion_user, telefono_user,  rol_user) values (?,?,?,?,?,?,?)`
+        let sql = `insert into usuarios (pk_cedula_user, nombre_user, email_user, password_user, fecha_nacimiento_user, descripcion_user, telefono_user,  rol_user) values (?,?,?,?,?,?,?,?)`
 
-        const [rows] = await pool.query(sql,[pk_cedula_user, nombre_user, email_user, password_user, descripcion_user, telefono_user,  rol_user])
+        const [rows] = await pool.query(sql,[pk_cedula_user, nombre_user, email_user, password_user, descripcion_user, fecha_nacimiento_user, telefono_user,  rol_user])
 
         if(rows.affectedRows > 0)
         {
