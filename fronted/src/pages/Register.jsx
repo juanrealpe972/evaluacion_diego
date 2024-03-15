@@ -11,21 +11,23 @@ function Register() {
   const fechanac = useRef(null);
   const rol = useRef(null);
 
+  const URL = "http://localhost:4001/usuario/registrar";
+
   const onSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const dates = {
-        cedula: parseInt(cedula.current.value),
-        nombre: nombre.current.value,
-        email: email.current.value,
-        password: password.current.value,
-        descripcion: descripcion.current.value,
-        telefono: telefono.current.value,
-        fechanac: fechanac.current.value,
-        rol: rol.current.value,
+        pk_cedula_user: parseInt(cedula.current.value),
+        nombre_user: nombre.current.value,
+        email_user: email.current.value,
+        password_user: password.current.value,
+        descripcion_user: descripcion.current.value,
+        telefono_user: telefono.current.value,
+        fecha_nacimiento_user: fechanac.current.value,
+        rol_user: rol.current.value,
       };
       await axios
-        .post("http://localhost:4000/usuario/registrar", dates)
+        .post(URL, dates)
         .then((response) => {
           if (response.status === 200) {
             alert("Usuario registrado correctamente");
@@ -35,7 +37,7 @@ function Register() {
             alert("Error al insertar el usuario");
           }
         })
-        .catch(() => alert("Error al registrar")); 
+        .catch(() => alert("Error al registrar"));
     } catch (error) {
       alert("Error en el sistema" + error);
     }
@@ -51,57 +53,57 @@ function Register() {
         <h2 className="text-center">Registro</h2>
         <input
           type="text"
-          id="cedula"
+          id="pk_cedula_user"
           required={true}
-          name="cedula"
+          name="pk_cedula_user"
           placeholder="Cedula"
           ref={cedula}
         />
         <input
           type="text"
-          id="nombre"
+          id="nombre_user"
           required={true}
-          name="nombre"
+          name="nombre_user"
           placeholder="Nombre"
           ref={nombre}
         />
         <input
           type="email"
-          id="email"
+          id="email_user"
           required={true}
-          name="email"
+          name="email_user"
           placeholder="Email "
           ref={email}
         />
         <input
           type="password"
-          id="password"
+          id="password_user"
           required={true}
-          name="password"
+          name="password_user"
           placeholder="Contraseña"
           ref={password}
         />
         <input
           type="text"
-          id="descripcion"
+          id="descripcion_user"
           required={true}
-          name="descripcion"
+          name="descripcion_user"
           placeholder="Descripcion"
           ref={descripcion}
         />
         <input
           type="text"
           required={true}
-          id="telefono"
-          name="telefono"
+          id="telefono_user"
+          name="telefono_user"
           placeholder="Telefono"
           ref={telefono}
         />
         <input
           type="date"
-          id="fechanac"
+          id="fecha_nacimiento_user"
           required={true}
-          name="fechanac"
+          name="fecha_nacimiento_user"
           placeholder="fecha_nacimiento"
           ref={fechanac}
         />
